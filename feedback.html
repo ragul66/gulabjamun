@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Feedback Form</title>
+    <style>
+        /* Add your CSS styling here */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .rating {
+            margin-bottom: 10px;
+        }
+        .rating .emoji-face {
+            font-size: 40px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .rating-text input {
+            font-size: 20px;
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .comments textarea {
+            font-size: 20px;
+            width: 100%;
+            padding: 5px;
+            margin-top: 10px;
+        }
+        .submit-button {
+            font-size: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .thank-you-message {
+            display: none;
+            font-size: 24px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Define background colors for each emoji */
+        .emoji-face[data-rating="😃"] {
+            background-color: #28a745;
+            border-radius: 5px;
+        }
+        .emoji-face[data-rating="😊"] {
+            background-color: #17a2b8;
+            border-radius: 5px;
+        }
+        .emoji-face[data-rating="😐"] {
+            background-color: #ffc107;
+            border-radius: 5px;
+        }
+        .emoji-face[data-rating="😕"] {
+            background-color: #fd7e14;
+            border-radius: 5px;
+        }
+        .emoji-face[data-rating="😞"] {
+            background-color: #dc3545;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive Feedback Form</h1>
+        <form>
+            <div class="rating">
+                <label for="feedback-rating">Rate your experience:</label>
+		<div>
+                <span class="emoji-face" data-rating="😃">😃</span>
+                <span class="emoji-face" data-rating="😊">😊</span>
+                <span class="emoji-face" data-rating="😐">😐</span>
+                <span class="emoji-face" data-rating="😕">😕</span>
+                <span class="emoji-face" data-rating="😞">😞</span>
+		</div>
+            </div>
+            <div class="rating-text">
+                <label for="feedback-rating-text">Rating Text:</label>
+                <input type="text" id="feedback-rating-text" name="rating-text" readonly>
+            </div>
+            <div class="comments">
+                <label for="feedback-comments">Comments:</label>
+                <textarea id="feedback-comments" name="comments" rows="4"></textarea>
+            </div>
+            <button type="button" id="submit-feedback" class="submit-button">Submit Feedback</button>
+            <div class="thank-you-message" id="thank-you-message">Thank you for your feedback!</div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const submitButton = document.getElementById('submit-feedback');
+            const emojiFaces = document.querySelectorAll('.emoji-face');
+            const ratingText = document.getElementById('feedback-rating-text');
+            const commentsTextarea = document.getElementById('feedback-comments');
+            const thankYouMessage = document.getElementById('thank-you-message');
+            const container = document.querySelector('.container');
+
+            // Function to update the rating text field and background color
+            function updateRating(selectedRating) {
+                switch (selectedRating) {
+                    case '😃':
+                        ratingText.value = 'Excellent';
+                        container.style.backgroundColor = '#28a745';
+                        break;
+                    case '😊':
+                        ratingText.value = 'Good';
+                        container.style.backgroundColor = '#17a2b8';
+                        break;
+                    case '😐':
+                        ratingText.value = 'Neutral';
+                        container.style.backgroundColor = '#ffc107';
+                        break;
+                    case '😕':
+                        ratingText.value = 'Fair';
+                        container.style.backgroundColor = '#fd7e14';
+                        break;
+                    case '😞':
+                        ratingText.value = 'Bad';
+                        container.style.backgroundColor = '#dc3545';
+                        break;
+                    default:
+                        ratingText.value = '';
+                        container.style.backgroundColor = '';
+                        break;
+                }
+            }
+
+            // Add click event listeners to emoji faces
+            emojiFaces.forEach(emojiFace => {
+                emojiFace.addEventListener('click', function () {
+                    const selectedRating = this.getAttribute('data-rating');
+                    updateRating(selectedRating);
+                });
+            });
+
+            submitButton.addEventListener('click', function () {
+                const selectedRating = ratingText.value;
+                const comments = commentsTextarea.value;
+
+                // Display a thank you message
+                thankYouMessage.style.display = 'block';
+
+                // Clear the form
+                ratingText.value = '';
+                commentsTextarea.value = '';
+
+                // Reset background color
+                container.style.backgroundColor = '';
+
+                // Log feedback to the console (you can replace this with your desired submission process)
+                console.log(`Rating (Emoji): ${selectedRating}`);
+console.log(`Rating (Text): ${ratingText.value}`);
+console.log(`Comments: ${comments}`);
+
+            });
+        });
+    </script>
+</body>
+</html>

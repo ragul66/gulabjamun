@@ -1,0 +1,50 @@
+
+body {
+    font-family: fantasy;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Dark gray background color */
+}
+
+h2 {
+    font-size: 48px;
+    color: #ff9900; /* Orange color for heading */
+    margin-bottom: 30px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #66ccff; /* Light blue color for text */
+    font-size: 36px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+    background-color: #444; /* Dark gray background color */
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+a:hover {
+    color: #ff7b00; /* Dark orange color on hover */
+    background-color: #555; /* Slightly darker gray background color on hover */
+    text-shadow: 2px 2px 4px rgba(255, 102, 0, 0.7);
+    transform: scale(1.05);
+}
+.gaming-icon {
+    font-size: 36px; /* Set the desired font size for the gaming icon */
+    color: #fff; /* Set the color to white */
+    margin-right: 10px; /* Add some spacing between the icon and text */
+}
+.gaming-icon:hover {
+    color: #ffcc00; /* Set the color to a different shade on hover (e.g., yellow) */
+}

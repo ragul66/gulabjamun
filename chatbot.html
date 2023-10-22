@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Chatbot</title>
+    <link rel="website icon" type="jpg" href="chatbot123.jpg">
+    <link rel="stylesheet" type="text/css" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="todo.css">
+    <link href="https://cdn.jsdelivr.net/npm/emoji-mart-picker@latest/css/emoji-mart.css" rel="stylesheet">
+    <style>
+        /* CSS for Interaction History Panel */
+        
+        .interaction-history {
+    width: 30%; /* Set the desired width for the panel */
+    max-height: 400px; /* Set the maximum height for the panel */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    padding: 20px;
+    background-color: #f0f0f0; /* Background color for the panel */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
+    margin-right: 20px; /* Add some margin for spacing */
+    float: right; /* Align to the right side */
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 30%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+}
+
+.interaction-history h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Style for interaction history list */
+#interaction-history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Add margin to reset default spacing */
+}
+
+#interaction-history-list li {
+    margin-bottom: 10px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+</style>
+</head>
+<body>
+    
+   <!-- Navigation Bar -->
+<div class="navbar">
+    
+    <a href="music\music.html" class="icon">
+        <i class="fas fa-music"></i> music
+    </a>
+    
+    </a>
+    <a href="feedback.html" class="icon">
+        <i class="fa fa-envelope"></i> Feedback
+    </a>
+    
+    <a href="entertainmentlist.html" class="icon">
+        <i class="fas fa-gamepad"></i> gaming list
+    </a>
+    <a href="#" class="icon">
+        <i class="fa fa-user"></i> Login
+    </a>
+    
+    <!-- Add this HTML structure inside your navigation bar container -->
+        <!-- Other navigation bar items go here -->
+    
+        <!-- Button to toggle the To-Do List -->
+    <button id="todoToggleBtn">To-Do List</button>
+    <button id="toggle-history-button">Toggle Interaction History</button>
+    <div class="interaction-history">
+        <h2>Interaction History</h2>
+        <ul id="interaction-history-list">
+            <!-- Interaction history items will be displayed here -->
+        </ul>
+    </div>
+    
+    <!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // JavaScript code for modal functionality
+    $(document).ready(function() {
+        var entertainmentModal = document.getElementById('entertainmentModal');
+        var entertainmentButton = document.getElementById("entertainment-button");
+        var closeEntertainmentModal = document.getElementsByClassName("close")[0];
+
+        $(entertainmentButton).click(function() {
+            $(entertainmentModal).css('display', 'block');
+        });
+        $(closeEntertainmentModal).click(function() {
+            $(entertainmentModal).css('display', 'none');
+        });
+        $(window).click(function(event) {
+            if (event.target == entertainmentModal) {
+                $(entertainmentModal).css('display', 'none');
+            }
+        });
+    });
+</script>
+
+
+    <!-- To-Do List Modal -->
+    <div id="todoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="navbar-item">
+                <input type="text" id="task" placeholder="Enter your task...">
+                <button onclick="addTask()">(+)</button>
+                <ul id="task-list"></ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#todo-button").click(function() {
+                $("#todo-container").toggle();
+            });
+        });
+    </script>
+
+
+
+    </div>
+</div>
+
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <div class="background-container"></div>
+            <div id="voice-response"></div>
+
+    <div class="chat-container">
+        <div class="chat-header">gulab jamun</div>
+        <div class="chat-log" id="chat-log">
+            <div class="message user-message">
+                <div class="avatar"></div>
+                <span class="timestamp"></span>
+                 Hello, chatbot!
+            </div>
+            <div class="message bot-message">
+                <div class="avatar"></div>
+                <span class="timestamp"></span>
+                 Hi there! How can I help you?
+            </div>
+                      <!-- Chat messages will be displayed here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type a message..." data-emojiable="true">
+            <button id="speech-button">Speak</button>
+            <button id="send-button" class="send-button">
+                <i class="fas fa-paper-plane"></i> <!-- Font Awesome send icon -->
+            </button>            
+            <button id="toggle-voice"><i class="fas fa-volume-up"></i></button>            
+            <script src="chatbot.js"></script>
+            <script src="emoji-mart.js"></script>
+            
+        </div>
+        
+    </div>
+    
+    
+    <script src="chatbot.js"></script>
+    <script src="nav.js"></script>
+    <script src="todo.js"></script>
+    <script src="modal.js"></script>
+    <script src="interactionLogger.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emoji-mart-picker@latest/js/emoji-mart.js"></script>
+
+</body>
+</html>

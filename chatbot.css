@@ -1,0 +1,275 @@
+body {
+    font-family: 'Press Start 2P', Arial, sans-serif;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-message .avatar {
+    background-image: url('user-avatar.png');
+    background-size: cover;
+}
+
+.bot-message .avatar {
+    background-image: url('bot-avatar.jpg');
+    background-size: cover;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease;
+    background-position: center center;
+    z-index: -1;
+    padding-top: 20%;
+    object-fit: cover;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chat-container {
+    width: 400px;
+    height: 500px;
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.chat-header {
+    background-color: #800000;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-log {
+    height: 360px;
+    width: 100%;
+    overflow-y: scroll;
+    padding: 10px;
+    animation: fadeIn 0.5s;
+    background-color: rgba(255, 218, 185, 0.8);
+    color: #800000;
+    scrollbar-width: thin;
+    -ms-overflow-style: none;
+}
+
+.chat-log::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.chat-log::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.toggle-voice-button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #800000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-voice-button:hover {
+    background-color: #ffa500;
+}
+
+input[type="text"] {
+    flex-grow: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: rgba(255, 218, 185, 0.8);
+    color: #800000;
+}
+
+input[type="text"]:focus {
+    border-color: #ffcc00;
+}
+
+.send-button {
+    background-color: #800000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.send-button i {
+    margin-right: 5px;
+}
+
+.send-button:hover {
+    background-color: #ffa500;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.bot-message {
+    animation: slideIn 0.5s;
+}
+
+.message {
+    max-width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    clear: both;
+}
+
+.user-message {
+    background-color: #87CEEB;
+    color: #FFFFFF;
+    float: right;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bot-message {
+    background-color: #FFB6C1;
+    color: #000000;
+    float: left;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #777;
+    margin-right: 5px;
+}
+
+#interaction-button {
+    margin-top: 30px;
+}
+
+.conversation-history {
+    float: right;
+    width: 30%; /* Adjust the width as needed */
+    background-color: #f4f4f4;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 400px; /* Adjust the maximum height as needed */
+}
+
+/* Additional styles for conversation messages */
+.conversation-history .message {
+    margin-bottom: 10px;
+}
+
+#toggle-history-button {
+    background-color: #800000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#toggle-history-button:hover {
+    background-color: #ffa500;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* CSS to make the entertainment options visible and set text color to blue */
+#entertainment-list li {
+    visibility: visible;
+}
+
+#entertainment-list li a {
+    color: blue;
+    text-decoration: none; /* Remove underline from links */
+}
+
+#entertainment-list li a:hover {
+    color: darkblue; /* Change color on hover */
+}
